@@ -2,9 +2,11 @@
 layout: template1
 comments: false
 ---
+<br/>
 
-Feel like writing something to me?!<br/>
-Use the below form and feel free to shoot a message! :)
+Use the below form and feel free to send a message! :)
+
+<br/>
 
 <div class="panel panel-default shadow1">
       <div class="panel-heading">
@@ -26,7 +28,7 @@ Use the below form and feel free to shoot a message! :)
                   </div>
                 
                   <input type="text" name="_gotcha" style="display:none" />
-                  <input type="submit" value="Shoot!" class="btn btn-primary">
+                  <input type="submit" value="Send" class="btn btn-primary">
             </form>
       </div>
 </div>

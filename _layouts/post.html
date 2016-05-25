@@ -1,4 +1,113 @@
 ---
 layout: template1
+comments: true 
 ---
 
+<div class="row">
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="text-primary">{{ page.title }}</h3>
+                <span class="text-muted"><small>Posted on {{ page.date | date: "%B %-d, %Y" }}</small></span>
+            </div>
+            <div class="panel-body">
+                {{ content }}
+            </div>
+
+            <div class="panel-footer">
+                <ul class="pager blog-pager">
+                    {% if page.previous.url %}
+                    <li class="previous">
+                        <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top"
+                        title="{{page.previous.title}}">&larr; Previous Post</a>
+                    </li>
+                    {% endif %} {% if page.next.url %}
+                    <li class="next">
+                        <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">Next Post &rarr;</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+
+        {% if page.comments %}
+        <div class="panel panel-default">
+            <div class="panel-body">
+                {% include disqus.html %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span class="text-primary"><b>Recent Posts</b></span>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    {% for post in site.posts offset: 0 limit: 5  %}
+                        <li>
+                            <a href="{{ post.url }}">{{ post.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span class="text-primary"><b>Blog Categories</b></span>
+            </div>
+            <div class="panel-body">
+                <div class="panel-group" id="accordion">
+                    {% for category in site.categories %}
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" name="{{ category | first }}" 
+                                   href="#{{ category | first }}">
+                                    {{ category | first }}
+                                </a>
+                            </h4>
+                        </div>
+                        
+                        {% if forloop.index == 1 %}
+                        <div id="{{ category | first }}" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <ul>
+                                    {% for posts in category %} {% for post in posts %}
+                                    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+                                    {% endfor %} {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div id="{{ category | first }}" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <ul>
+                                    {% for posts in category %} {% for post in posts %}
+                                    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+                                    {% endfor %} {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        {% endif %}                       
+                        
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span class="text-primary"><b>Disclaimer</b></span>
+            </div>
+            <div class="panel-body">
+                The views expressed on this blog are my personal views and do not reflect the views of 
+                my employer or campaigns I am supporting.
+            </div>
+        </div>
+    </div>
+</div>
