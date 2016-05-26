@@ -11,10 +11,10 @@ gems:
 #baseurl: "/projectname"
 url: ""
 enforce_ssl: ""
-baseurl: ""
+baseurl: "/jekyllBasicBlog"
 
 # Title of website
-title: John Mustermann
+title: Babji Chetty
 
 #Default keywords (used if no keywords are specified on a page basis)
 keywords: test1, test2, etc

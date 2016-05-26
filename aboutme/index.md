@@ -4,4 +4,4 @@ title: About me
 comments: false
 ---
 
-Hey there! My name is **John, Mustermann**.
+Hey there! My name is **Babji, Chetty**
