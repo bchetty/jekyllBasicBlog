@@ -32,8 +32,3 @@ Use the below form and feel free to send a message! :)
             </form>
       </div>
 </div>
-
-<script>
-    var contactform =  document.getElementById('contactform');
-    contactform.setAttribute('action', '//formspree.io/' + 'bchetty' + '@' + 'somemail' + '.' + 'com');
-</script>
